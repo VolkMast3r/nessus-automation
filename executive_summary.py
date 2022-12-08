@@ -1,101 +1,67 @@
 import csv
 import json
 import matplotlib.pyplot as plt
-from docxtpl import DocxTemplate
-from Analyze_csv import Analyze_Risks, Analyze_solution, Analyze_Hosts
+from docxtpl import DocxTemplate, InlineImage
 from docx import Document
 from docx.shared import Inches
-import httpx
+from utils import risk_analysis, vuln_analysis
 
-# load csv file from csvs directory
+# initialize the document
+document = DocxTemplate('word_reports/activity_log.docx')
 
-def load_csv(csv_file):
-    with open(csv_file, 'r') as f:
-        # Read the file
-        reader = csv.DictReader(f)
-        # Create a list of dicts
-        data = list(reader)
-        # drop Risk = None
-        data = [row for row in data if row['Risk'] != 'None']
-        return data
+risks = risk_analysis.risk_percent_count()
 
+# define the colors High = red, Medium = yellow, Low = green, critical = purple
+colors = ['red', 'Orange', 'green', 'purple']
+# define the labels
+labels = ['High', 'Medium', 'Low', 'Critical']
+# define the values
+values = [risks['High'], risks['Medium'], risks['Low'], risks['Critical']]
+# define the explode
+explode = (0, 0, 0, 0.1)
 
-print(load_csv('repos/csvs/Momentum_Credit_Internal_egy66a.csv'))
+# plot the pie chart
+plt.pie(values, labels=labels, colors=colors, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+plt.axis('equal')
+plt.title('Risk Breakdown')
+plt.savefig('word_reports/risk_breakdown.png')
 
+imagen = InlineImage(document, 'word_reports/risk_breakdown.png', width=Inches(5))
 
-def vuln_summary(data):
-    # instance of the class
-    analyze_risks = Analyze_Risks(data)
-    print(analyze_risks.risk)
-    # plot the risks as percentages
-    # define the colors High = red, Medium = yellow, Low = green, critical = purple
-    colors = ['red', 'Orange', 'green', 'purple']
-    # define the labels
-    labels = ['High', 'Medium', 'Low', 'Critical']
-    # define the values
-    values = [analyze_risks.risk['High'], analyze_risks.risk['Medium'],
-            analyze_risks.risk['Low'], analyze_risks.risk['Critical']]
-    # plot the pie chart
-    plt.pie(values, labels=labels, colors=colors, autopct='%1.1f%%')
-    plt.title('Risk Distribution')
-    # legend
-    plt.legend(labels, loc='best')
-    # save the plot
-    plt.savefig('Risk_Distribution.png')
-    doc = DocxTemplate("repos/word_reports/activity_log.docx")
-    context = {'hosts': analyze_risks.risk}
-    doc.render(context)
-    doc.save("output.docx")
-    # insert the pie chart into the word document
-    document = Document('output.docx')
-    document.add_picture('Risk_Distribution.png', width=Inches(6))
-    document.save('output.docx')
-    # insert analyze_risks.risk into the word document
-    document = Document('output.docx')
-    document.add_paragraph(str(f'High Severity issues account for {analyze_risks.risk["High"]} of the total issues, \
-    Medium Severity issues account for {analyze_risks.risk["Medium"]} of the total issues, \
-    Low Severity issues account for {analyze_risks.risk["Low"]} of the total issues, \
-    Critical Severity issues account for {analyze_risks.risk["Critical"]} of the total issues.'))
-    # Highest Risk
-    document.add_paragraph(str(f'The highest risk is {max(analyze_risks.risk, key=analyze_risks.risk.get)} with {analyze_risks.risk[max(analyze_risks.risk, key=analyze_risks.risk.get)]} issues.'))
-    # save the document
-    document.save('repos/word_reports/output.docx')
+risk_summary = f'The breakdown of the vulnerabilities is as follows: Critical Vulnerabilities account for {risks["Critical"]}% of the total vulnerabilities, \
+High Vulnerabilities account for {risks["High"]}% of the total vulnerabilities, \
+Medium Vulnerabilities account for {risks["Medium"]}% of the total vulnerabilities, \
+Low Vulnerabilities account for {risks["Low"]}% of the total vulnerabilities. \
+\nHighest risk is {max(risks, key=risks.get)} '
 
-def top_recommendations(data):
-    # instance of the class
-    analyze_solution = Analyze_solution(data)
-    # insert analyze_solution.solution into the word document as a table
-    document = Document('output.docx')
-    table = document.add_table(rows=1, cols=2)
-    hdr_cells = table.rows[0].cells
-    hdr_cells[0].text = 'Recommendation'
-    hdr_cells[1].text = 'Count'
-    for key in analyze_solution.solution:
-        row_cells = table.add_row().cells
-        row_cells[0].text = key
-        row_cells[1].text = str(analyze_solution.solution[key])
-    document.save('repos/word_reports/output.docx')
+risks_host = risk_analysis.host_risk_count_combined()
 
-def top_hosts(data):
-    # instance of the class
-    analyze_hosts = Analyze_Hosts(data)
-    host_count_dict = analyze_hosts.host_count()
-    # sort the dictionary by value
-    host_count_dict = dict(sorted(host_count_dict.items(), key=lambda item: item[1], reverse=True))
-    print(host_count_dict)
-    # Host with the most issues
-    document = Document('repos/word_reports/output.docx')
-    document.add_paragraph(str(f'The host with the most issues is {max(host_count_dict, key=host_count_dict.get)} with {host_count_dict[max(host_count_dict, key=host_count_dict.get)]} issues.\
-    it accounts for {round(host_count_dict[max(host_count_dict, key=host_count_dict.get)]/sum(host_count_dict.values())*100, 2)}% of the total issues.'))
-    # save the document
-    document.save('repos/word_reports/output.docx')
+host_risk_summary = f'The host with the highest risk is {max(risks_host, key=risks_host.get)} with {risks_host[max(risks_host, key=risks_host.get)]} vulnerabilities,\
+which accounts for {round((risks_host[max(risks_host, key=risks_host.get)] / sum(risks_host.values())) * 100, 2)}% of the total vulnerabilities.\
+\nThe Top 5 hosts with the most vulnerabilities are: {list(risks_host.keys())[:5]} with {list(risks_host.values())[:5]} vulnerabilities \
+which accounts for {round((sum(list(risks_host.values())[:5]) / sum(risks_host.values())) * 100, 2)}% of the total vulnerabilities respectively.\
+'
+name_synopsis = vuln_analysis.name_synopsis()
 
-    
-
-# vuln_summary()
-# top_recommendations()
-# top_hosts()
+top_vuln_summary = f'The most common vulnerability is {list(name_synopsis.keys())[0]} with {list(name_synopsis.values())[0]["count"]} occurences \
+and a risk of {list(name_synopsis.values())[0]["risk"]}. Its solution is to {list(name_synopsis.values())[0]["Solution"]}\
+\nThe second most common vulnerability is {list(name_synopsis.keys())[1]} with {list(name_synopsis.values())[1]["count"]} occurences \
+and a risk of {list(name_synopsis.values())[1]["risk"]}. Its solution is to {list(name_synopsis.values())[1]["Solution"]}\
+\nThe third most common vulnerability is {list(name_synopsis.keys())[2]} with {list(name_synopsis.values())[2]["count"]} occurences'
 
 
+risk_synopsis = vuln_analysis.risk_synopsis()
+
+critical_synopsis = f'The vulnerability with Critical risk is {list(risk_synopsis.keys())[0]} with {list(risk_synopsis.values())[0]["count"]} occurences\
+and a risk of {list(risk_synopsis.values())[0]["risk"]}. Its solution is to {list(risk_synopsis.values())[0]["Solution"]}\
+    \nThe Second Highest Critical vulnerability is {list(risk_synopsis.keys())[1]} with {list(risk_synopsis.values())[1]["count"]} occurences\
+    and a risk of {list(risk_synopsis.values())[1]["risk"]}. Its solution is to {list(risk_synopsis.values())[1]["Solution"]}\
+    \nThe Third Highest Critical vulnerability is {list(risk_synopsis.keys())[2]} with {list(risk_synopsis.values())[2]["count"]} occurences \
+    and a risk of {list(risk_synopsis.values())[2]["risk"]}. Its solution is to {list(risk_synopsis.values())[2]["Solution"]} '
+
+context = {"risk_summary": risk_summary, "host_risk_summary": host_risk_summary,
+           "risk_breakdown": imagen, "name_synopsis": top_vuln_summary, "critical_synopsis": critical_synopsis}
+document.render(context)
+document.save('word_reports/output.docx')
 
 

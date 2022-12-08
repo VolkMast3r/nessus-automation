@@ -33,6 +33,7 @@ class Analyze_synopsis:
         self.host_synopsis = self.host_synopsis_list()
         self.host = self.host_count()
         self.host_synopsis = self.host_synopsis_list()
+        self.top5_synopsis = self.top5_synopsis()
 
     def synopsis_count(self):
         '''
@@ -46,6 +47,19 @@ class Analyze_synopsis:
             else:
                 synopsis[row['Synopsis']] = 1
         return dict(sorted(synopsis.items(), key=lambda item: item[1], reverse=True))
+
+    def top5_synopsis(self):
+        '''
+        output is like this:
+        {'The remote host is missing a security patch': 1}
+        '''
+        synopsis = {}
+        for row in self.data:
+            if row['Synopsis'] in synopsis:
+                synopsis[row['Synopsis']] += 1
+            else:
+                synopsis[row['Synopsis']] = 1
+        return dict(sorted(synopsis.items(), key=lambda item: item[1], reverse=True)[:5])
 
     def synopsis_hosts_list(self):
         '''
@@ -66,7 +80,7 @@ class Analyze_synopsis:
     def host_count(self):
         '''
         output is like this
-        {'
+        {'192.168.0.1': 1}
         '''
 
         host = {}
@@ -80,7 +94,7 @@ class Analyze_synopsis:
     def host_synopsis_list(self):
         '''
         output is like this:
-        {'
+        {'192.168.1.1': ['The remote host is missing a security patch']}
         '''
 
         host_synopsis = {}
@@ -93,14 +107,19 @@ class Analyze_synopsis:
             host_synopsis[key] = list(set(host_synopsis[key]))
         return host_synopsis
 
-
-# Create an instance of the class
-analyze = Analyze_synopsis(data)
-
-# Class attributes to JSON
-with open('synopsis.json', 'w') as f:
-    json.dump(analyze.synopsis, f, indent=4)
-
+    # top 5 synopsis with their severity and solution
+    def top5_synopsis_severity_solution(self):
+        '''
+        output is like this:
+        {'The remote host is missing a security patch': 1}
+        '''
+        synopsis = {}
+        for row in self.data:
+            if row['Synopsis'] in synopsis:
+                synopsis[row['Synopsis']] += 1
+            else:
+                synopsis[row['Synopsis']] = 1
+        return dict(sorted(synopsis.items(), key=lambda item: item[1], reverse=True)[:5])
 
 class Analyze_solution:
     def __init__(self, data):
