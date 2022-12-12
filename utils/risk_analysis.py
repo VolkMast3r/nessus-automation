@@ -2,7 +2,7 @@ import csv
 import json
 import matplotlib.pyplot as plt
 import os
-
+from utils.csv_downloader import download_csv_report
 
 # Read CSV file Authenticated_Scans_pxo3q6.csv to a dict
 def load_csv(csv_file):
@@ -15,17 +15,16 @@ def load_csv(csv_file):
         data = [row for row in data if row['Risk'] != 'None']
         return data
 
-
-
 # corelate Risk with Hosts
-def risk_count():
+def risk_count(scan_id):
     '''
     Count the number of risks\n
     :param data: list of dicts\n
     :return: dict of risks and their counts like\n
     {'High': 2, 'Medium': 1, 'Low': 1}
     '''
-    data = load_csv('repos/csvs/Momentum_Credit_Internal_egy66a.csv')
+    file_name = download_csv_report(f'{scan_id}')
+    data = load_csv(f'repos/csvs/{file_name}')
     risk = {}
     for row in data:
         if row['Risk'] in risk:
@@ -35,14 +34,15 @@ def risk_count():
     return risk
 
 
-def risk_percent_count():
+def risk_percent_count(scan_id):
     '''
     Count the number of risks\n
     :param data: list of dicts\n
     :return: dict of risks and their percentages like\n
     {'High': 50.0, 'Medium': 25.0, 'Low': 25.0}
     '''
-    data = load_csv('repos/csvs/Momentum_Credit_Internal_egy66a.csv')
+    file_name = download_csv_report(f'{scan_id}')
+    data = load_csv(f'repos/csvs/{file_name}')
     risk = {}
     for row in data:
         if row['Risk'] in risk:
@@ -57,14 +57,15 @@ def risk_percent_count():
 
 
 # Host with breakdown of risks
-def host_risk_count():
+def host_risk_count(scan_id):
     '''
     Count the number of risks per host\n
     :param data: list of dicts\n
     :return: dict of hosts and their risks like\n
     {'192.168.1.2': {'High': 2, 'Medium': 1, 'Low': 1}}
     '''
-    data = load_csv('repos/csvs/Momentum_Credit_Internal_egy66a.csv')
+    file_name = download_csv_report(f'{scan_id}')
+    data = load_csv(f'repos/csvs/{file_name}')
     host_risk = {}
     for row in data:
         if row['Host'] in host_risk:
@@ -79,14 +80,15 @@ def host_risk_count():
 # print(json.dumps(host_risk_count(data), indent=4))
 
 # Combined Risk count per host
-def host_risk_count_combined():
+def host_risk_count_combined(scan_id):
     '''
     Count the number of risks per host\n
     :param data: list of dicts\n
     :return: dict of hosts and their risks like\n
     {'192.168.1.1': 4, '192.168.1.2': 4}
     '''
-    data = load_csv('repos/csvs/Momentum_Credit_Internal_egy66a.csv')
+    file_name = download_csv_report(f'{scan_id}')
+    data = load_csv(f'repos/csvs/{file_name}')
     host_risk = {}
     for row in data:
         if row['Host'] in host_risk:
@@ -102,3 +104,5 @@ def host_risk_count_combined():
     return host_risk
 # print(json.dumps(host_risk_count_combined(data), indent=4))
 
+
+print(host_risk_count_combined('139'))

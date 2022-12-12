@@ -2,6 +2,7 @@ import csv
 import json
 import matplotlib.pyplot as plt
 import os
+from utils.csv_downloader import download_csv_report
 
 # Read CSV file Authenticated_Scans_pxo3q6.csv to a dict
 
@@ -16,8 +17,9 @@ def load_csv(csv_file):
         return data
 
 # corelate Name and Synopsis
-def name_synopsis():
-    data = load_csv('repos/csvs/Momentum_Credit_Internal_egy66a.csv')
+def name_synopsis(scan_id):
+    file_name = download_csv_report(f'{scan_id}')
+    data = load_csv(f'repos/csvs/{file_name}')
     # print like this: {name:{ "synopsis": synopsis, "count": count, "risk": risk, "Solution": solution,}}
     name_synopsis = {}
     for row in data:
@@ -51,9 +53,9 @@ def name_synopsis():
 # corelate Name and Synopsis
 
 
-def risk_synopsis():
-    data = load_csv('repos/csvs/Momentum_Credit_Internal_egy66a.csv')
-    # print like this: {name:{ "synopsis": synopsis, "count": count, "risk": risk, "Solution": solution,}}
+def risk_synopsis(scan_id):
+    file_name = download_csv_report(f'{scan_id}')
+    data = load_csv(f'repos/csvs/{file_name}')
     name_synopsis = {}
     for row in data:
         if row['Name'] in name_synopsis:

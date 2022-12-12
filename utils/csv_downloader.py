@@ -7,11 +7,14 @@ import os, sys
 from dotenv import load_dotenv
 
 
+
 # Get API keys from .env file  in the current directory
-env_path = os.path.join(os.path.dirname(__file__), '.env')
+env_path = os.path.join(os.path.dirname(__file__), '../.env')
 load_dotenv(env_path)
 base_url = os.environ.get('base_url')
+print(base_url)
 headers = json.loads(os.environ.get('headers'))
+print(headers)
 
 def download_csv_report(scan_id):
     '''
@@ -47,6 +50,8 @@ def download_csv_report(scan_id):
         df = pd.read_csv(f'repos/csvs/{filename}')
         df.to_excel(f'repos/excels/{str(filename)}.xlsx', index=False)
         break
+        # return filename
+    return filename
 
 # function to download html report
 def download_html_report(scan_id):
@@ -83,4 +88,4 @@ def download_html_report(scan_id):
             break
 
 
-print(download_html_report(158))
+print(download_csv_report(124))
