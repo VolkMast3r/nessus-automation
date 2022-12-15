@@ -1,21 +1,13 @@
 import csv
-import json
-import matplotlib.pyplot as plt
-import os
 from utils.csv_downloader import download_csv_report
 
-# Read CSV file Authenticated_Scans_pxo3q6.csv to a dict
 def load_csv(csv_file):
     with open(csv_file, 'r') as f:
-        # Read the file
         reader = csv.DictReader(f)
-        # Create a list of dicts
         data = list(reader)
-        # drop Risk = None
         data = [row for row in data if row['Risk'] != 'None']
         return data
 
-# corelate Risk with Hosts
 def risk_count(scan_id):
     '''
     Count the number of risks\n
@@ -49,14 +41,12 @@ def risk_percent_count(scan_id):
             risk[row['Risk']] += 1
         else:
             risk[row['Risk']] = 1
-    # calculate the percentage of each risk
     total = sum(risk.values())
     for key in risk:
         risk[key] = round((risk[key] / total) * 100, 2)
     return risk
 
 
-# Host with breakdown of risks
 def host_risk_count(scan_id):
     '''
     Count the number of risks per host\n
@@ -77,9 +67,7 @@ def host_risk_count(scan_id):
             host_risk[row['Host']] = {row['Risk']: 1}
     return host_risk
 
-# print(json.dumps(host_risk_count(data), indent=4))
 
-# Combined Risk count per host
 def host_risk_count_combined(scan_id):
     '''
     Count the number of risks per host\n
@@ -95,14 +83,7 @@ def host_risk_count_combined(scan_id):
             host_risk[row['Host']] += 1
         else:
             host_risk[row['Host']] = 1
-    # sort the dict by value
-#     host_risk = dict(sorted(host_risk.items(), key=lambda item: item[1], reverse=True))
-#     print(f'The host with the most risks is {list(host_risk.keys())[0]} with {list(host_risk.values())[0]} risks \
-#         and accounts for {round((list(host_risk.values())[0] / sum(host_risk.values())) * 100, 2)}% of the total risks')
-#     print(f'The Top 5 hosts with the most risks are: {list(host_risk.keys())[:5]} with {list(host_risk.values())[:5]} risks \
-#         and accounts for {round((sum(list(host_risk.values())[:5]) / sum(host_risk.values())) * 100, 2)}% of the total risks')
     return host_risk
-# print(json.dumps(host_risk_count_combined(data), indent=4))
 
 
-print(host_risk_count_combined('139'))
+# print(host_risk_count_combined('139'))

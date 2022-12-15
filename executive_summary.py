@@ -89,4 +89,3 @@ context = {"risk_summary": risk_summary, "host_risk_summary": host_risk_summary,
 document.render(context)
 document.save('word_reports/output.docx')
 
-

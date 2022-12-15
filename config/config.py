@@ -20,3 +20,5 @@ def get_xpaths():
     return xpaths
 
 # return the xpaths dictionary from a function
+
+platcorp_subs = {}

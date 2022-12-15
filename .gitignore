@@ -170,4 +170,6 @@ cython_debug/
 !.gitlab-ci.production.yml
 
 # local files
-# 
+# csv files
+*.csv
+/repos/csvs/*.csv

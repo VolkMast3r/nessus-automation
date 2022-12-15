@@ -1,0 +1,1390 @@
+{
+  "comphosts": [],
+  "compliance": [],
+  "filters": [
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "TEXT",
+        "regex": ".*",
+        "type": "entry"
+      },
+      "name": "hostname",
+      "operators": [
+        "eq",
+        "neq",
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Hostname"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "TEXT",
+        "regex": ".*",
+        "type": "entry"
+      },
+      "name": "description",
+      "operators": [
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Plugin Description"
+    },
+    {
+      "control": {
+        "list": [
+          "AIX Local Security Checks",
+          "Alma Linux Local Security Checks",
+          "Amazon Linux Local Security Checks",
+          "Backdoors",
+          "Brute force attacks",
+          "CGI abuses",
+          "CGI abuses : XSS",
+          "CISCO",
+          "CentOS Local Security Checks",
+          "DNS",
+          "Databases",
+          "Debian Local Security Checks",
+          "Default Unix Accounts",
+          "Denial of Service",
+          "F5 Networks Local Security Checks",
+          "FTP",
+          "Fedora Local Security Checks",
+          "Firewalls",
+          "FreeBSD Local Security Checks",
+          "Gain a shell remotely",
+          "General",
+          "Gentoo Local Security Checks",
+          "HP-UX Local Security Checks",
+          "Huawei Local Security Checks",
+          "Junos Local Security Checks",
+          "MacOS X Local Security Checks",
+          "Mandriva Local Security Checks",
+          "Misc.",
+          "Mobile Devices",
+          "Netware",
+          "NewStart CGSL Local Security Checks",
+          "Oracle Linux Local Security Checks",
+          "OracleVM Local Security Checks",
+          "Palo Alto Local Security Checks",
+          "Peer-To-Peer File Sharing",
+          "PhotonOS Local Security Checks",
+          "Policy Compliance",
+          "Port scanners",
+          "RPC",
+          "Red Hat Local Security Checks",
+          "Rocky Linux Local Security Checks",
+          "SCADA",
+          "SMTP problems",
+          "SNMP",
+          "Scientific Linux Local Security Checks",
+          "Service detection",
+          "Settings",
+          "Slackware Local Security Checks",
+          "Solaris Local Security Checks",
+          "SuSE Local Security Checks",
+          "Tenable.ot",
+          "Ubuntu Local Security Checks",
+          "VMware ESX Local Security Checks",
+          "Virtuozzo Local Security Checks",
+          "Web Servers",
+          "Windows",
+          "Windows : Microsoft Bulletins",
+          "Windows : User management"
+        ],
+        "prefix": "filter",
+        "type": "dropdown"
+      },
+      "name": "plugin_family",
+      "operators": [
+        "eq",
+        "neq"
+      ],
+      "readable_name": "Plugin Family"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "NUMBER",
+        "regex": "^[0-9, ]+$",
+        "type": "entry"
+      },
+      "name": "plugin_id",
+      "operators": [
+        "eq",
+        "neq",
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Plugin ID"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "YYYY-MM-DD",
+        "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+        "type": "datefield"
+      },
+      "name": "plugin_modification_date",
+      "operators": [
+        "date-lt",
+        "date-gt",
+        "date-eq",
+        "date-neq",
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Plugin Modification Date"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "TEXT",
+        "regex": ".*",
+        "type": "entry"
+      },
+      "name": "plugin_name",
+      "operators": [
+        "eq",
+        "neq",
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Plugin Name"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "TEXT",
+        "regex": ".*",
+        "type": "entry"
+      },
+      "name": "plugin_output",
+      "operators": [
+        "eq",
+        "neq",
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Plugin Output"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "YYYY-MM-DD",
+        "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+        "type": "datefield"
+      },
+      "name": "plugin_publication_date",
+      "operators": [
+        "date-lt",
+        "date-gt",
+        "date-eq",
+        "date-neq",
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Plugin Publication Date"
+    },
+    {
+      "control": {
+        "list": [
+          "local",
+          "remote"
+        ],
+        "prefix": "filter",
+        "type": "dropdown"
+      },
+      "name": "plugin_type",
+      "operators": [
+        "eq",
+        "neq"
+      ],
+      "readable_name": "Plugin Type"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "80",
+        "regex": "^[0-9]+$",
+        "type": "entry"
+      },
+      "name": "port",
+      "operators": [
+        "eq",
+        "neq",
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Port"
+    },
+    {
+      "control": {
+        "list": [
+          "tcp",
+          "udp",
+          "icmp"
+        ],
+        "prefix": "filter",
+        "type": "dropdown"
+      },
+      "name": "protocol",
+      "operators": [
+        "eq",
+        "neq"
+      ],
+      "readable_name": "Protocol"
+    },
+    {
+      "control": {
+        "list": [
+          "None",
+          "Low",
+          "Medium",
+          "High",
+          "Critical"
+        ],
+        "prefix": "filter",
+        "type": "dropdown"
+      },
+      "name": "risk_factor",
+      "operators": [
+        "eq",
+        "neq"
+      ],
+      "readable_name": "Risk Factor"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "TEXT",
+        "regex": ".*",
+        "type": "entry"
+      },
+      "name": "solution",
+      "operators": [
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Solution"
+    },
+    {
+      "control": {
+        "prefix": "filter",
+        "readable_regex": "TEXT",
+        "regex": ".*",
+        "type": "entry"
+      },
+      "name": "synopsis",
+      "operators": [
+        "match",
+        "nmatch"
+      ],
+      "readable_name": "Synopsis"
+    }
+  ],
+  "history": [
+    {
+      "alt_targets_used": false,
+      "creation_date": 1670925849,
+      "history_id": 330,
+      "last_modification_date": 1670926440,
+      "node_host": null,
+      "node_id": null,
+      "node_name": null,
+      "owner_id": 2,
+      "scan_group": null,
+      "schedule_type": "manual",
+      "scheduler": 0,
+      "status": "completed",
+      "type": "local",
+      "uuid": "1fb6c230-a7cf-5a40-b862-9598e4353e0ab0a523d7a92c1bf4"
+    }
+  ],
+  "hosts": [
+    {
+      "critical": 0,
+      "high": 0,
+      "host_id": 2,
+      "host_index": 0,
+      "hostname": "10.1.15.53",
+      "info": 4,
+      "low": 0,
+      "medium": 0,
+      "numchecksconsidered": 271,
+      "offline_critical": 0,
+      "offline_high": 0,
+      "offline_info": 0,
+      "offline_low": 0,
+      "offline_medium": 0,
+      "progress": "100-100/271-271",
+      "scanprogresscurrent": 100,
+      "scanprogresstotal": 100,
+      "score": 4,
+      "severity": 4,
+      "severitycount": {
+        "item": [
+          {
+            "count": 4,
+            "severitylevel": 0
+          },
+          {
+            "count": 0,
+            "severitylevel": 1
+          },
+          {
+            "count": 0,
+            "severitylevel": 2
+          },
+          {
+            "count": 0,
+            "severitylevel": 3
+          },
+          {
+            "count": 0,
+            "severitylevel": 4
+          },
+          {
+            "count": 0,
+            "severitylevel": 5
+          },
+          {
+            "count": 0,
+            "severitylevel": 6
+          },
+          {
+            "count": 0,
+            "severitylevel": 7
+          },
+          {
+            "count": 0,
+            "severitylevel": 8
+          },
+          {
+            "count": 0,
+            "severitylevel": 9
+          }
+        ]
+      },
+      "totalchecksconsidered": 271
+    },
+    {
+      "critical": 0,
+      "high": 0,
+      "host_id": 3,
+      "host_index": 1,
+      "hostname": "10.1.15.60",
+      "info": 4,
+      "low": 0,
+      "medium": 0,
+      "numchecksconsidered": 271,
+      "offline_critical": 0,
+      "offline_high": 0,
+      "offline_info": 0,
+      "offline_low": 0,
+      "offline_medium": 0,
+      "progress": "100-100/271-271",
+      "scanprogresscurrent": 100,
+      "scanprogresstotal": 100,
+      "score": 4,
+      "severity": 4,
+      "severitycount": {
+        "item": [
+          {
+            "count": 4,
+            "severitylevel": 0
+          },
+          {
+            "count": 0,
+            "severitylevel": 1
+          },
+          {
+            "count": 0,
+            "severitylevel": 2
+          },
+          {
+            "count": 0,
+            "severitylevel": 3
+          },
+          {
+            "count": 0,
+            "severitylevel": 4
+          },
+          {
+            "count": 0,
+            "severitylevel": 5
+          },
+          {
+            "count": 0,
+            "severitylevel": 6
+          },
+          {
+            "count": 0,
+            "severitylevel": 7
+          },
+          {
+            "count": 0,
+            "severitylevel": 8
+          },
+          {
+            "count": 0,
+            "severitylevel": 9
+          }
+        ]
+      },
+      "totalchecksconsidered": 271
+    },
+    {
+      "critical": 0,
+      "high": 0,
+      "host_id": 4,
+      "host_index": 2,
+      "hostname": "172.16.4.67",
+      "info": 31,
+      "low": 0,
+      "medium": 0,
+      "numchecksconsidered": 271,
+      "offline_critical": 0,
+      "offline_high": 0,
+      "offline_info": 0,
+      "offline_low": 0,
+      "offline_medium": 0,
+      "progress": "100-100/271-271",
+      "scanprogresscurrent": 100,
+      "scanprogresstotal": 100,
+      "score": 31,
+      "severity": 31,
+      "severitycount": {
+        "item": [
+          {
+            "count": 31,
+            "severitylevel": 0
+          },
+          {
+            "count": 0,
+            "severitylevel": 1
+          },
+          {
+            "count": 0,
+            "severitylevel": 2
+          },
+          {
+            "count": 0,
+            "severitylevel": 3
+          },
+          {
+            "count": 0,
+            "severitylevel": 4
+          },
+          {
+            "count": 0,
+            "severitylevel": 5
+          },
+          {
+            "count": 0,
+            "severitylevel": 6
+          },
+          {
+            "count": 0,
+            "severitylevel": 7
+          },
+          {
+            "count": 0,
+            "severitylevel": 8
+          },
+          {
+            "count": 0,
+            "severitylevel": 9
+          }
+        ]
+      },
+      "totalchecksconsidered": 271
+    },
+    {
+      "critical": 0,
+      "high": 0,
+      "host_id": 5,
+      "host_index": 3,
+      "hostname": "172.16.4.65",
+      "info": 25,
+      "low": 0,
+      "medium": 0,
+      "numchecksconsidered": 271,
+      "offline_critical": 0,
+      "offline_high": 0,
+      "offline_info": 0,
+      "offline_low": 0,
+      "offline_medium": 0,
+      "progress": "100-100/271-271",
+      "scanprogresscurrent": 100,
+      "scanprogresstotal": 100,
+      "score": 25,
+      "severity": 25,
+      "severitycount": {
+        "item": [
+          {
+            "count": 25,
+            "severitylevel": 0
+          },
+          {
+            "count": 0,
+            "severitylevel": 1
+          },
+          {
+            "count": 0,
+            "severitylevel": 2
+          },
+          {
+            "count": 0,
+            "severitylevel": 3
+          },
+          {
+            "count": 0,
+            "severitylevel": 4
+          },
+          {
+            "count": 0,
+            "severitylevel": 5
+          },
+          {
+            "count": 0,
+            "severitylevel": 6
+          },
+          {
+            "count": 0,
+            "severitylevel": 7
+          },
+          {
+            "count": 0,
+            "severitylevel": 8
+          },
+          {
+            "count": 0,
+            "severitylevel": 9
+          }
+        ]
+      },
+      "totalchecksconsidered": 271
+    },
+    {
+      "critical": 0,
+      "high": 0,
+      "host_id": 6,
+      "host_index": 4,
+      "hostname": "10.1.15.52",
+      "info": 5,
+      "low": 0,
+      "medium": 0,
+      "numchecksconsidered": 271,
+      "offline_critical": 0,
+      "offline_high": 0,
+      "offline_info": 0,
+      "offline_low": 0,
+      "offline_medium": 0,
+      "progress": "100-100/271-271",
+      "scanprogresscurrent": 100,
+      "scanprogresstotal": 100,
+      "score": 5,
+      "severity": 5,
+      "severitycount": {
+        "item": [
+          {
+            "count": 5,
+            "severitylevel": 0
+          },
+          {
+            "count": 0,
+            "severitylevel": 1
+          },
+          {
+            "count": 0,
+            "severitylevel": 2
+          },
+          {
+            "count": 0,
+            "severitylevel": 3
+          },
+          {
+            "count": 0,
+            "severitylevel": 4
+          },
+          {
+            "count": 0,
+            "severitylevel": 5
+          },
+          {
+            "count": 0,
+            "severitylevel": 6
+          },
+          {
+            "count": 0,
+            "severitylevel": 7
+          },
+          {
+            "count": 0,
+            "severitylevel": 8
+          },
+          {
+            "count": 0,
+            "severitylevel": 9
+          }
+        ]
+      },
+      "totalchecksconsidered": 271
+    }
+  ],
+  "info": {
+    "acls": [
+      {
+        "display_name": null,
+        "id": null,
+        "name": null,
+        "owner": null,
+        "permissions": 0,
+        "type": "default"
+      },
+      {
+        "display_name": "kali",
+        "id": 2,
+        "name": "kali",
+        "owner": 1,
+        "permissions": 128,
+        "type": "user"
+      }
+    ],
+    "alt_targets_used": false,
+    "control": true,
+    "current_severity_base": "cvss_v3",
+    "current_severity_base_display": "CVSS v3.0",
+    "edit_allowed": true,
+    "folder_id": 183,
+    "hasaudittrail": true,
+    "haskb": true,
+    "hostcount": 6,
+    "migrated": 0,
+    "name": "AutoReconciliations",
+    "no_target": false,
+    "node_host": null,
+    "node_id": null,
+    "node_name": null,
+    "object_id": 329,
+    "offline": false,
+    "pci-can-upload": false,
+    "policy": "Host Discovery",
+    "policy_template_uuid": "bbd4f805-3966-d464-b2d1-0079eb89d69708c3a05ec2812bcf",
+    "scan_end": 1670926440,
+    "scan_end_timestamp": "1670926438",
+    "scan_group": null,
+    "scan_start": 1670925849,
+    "scan_start_timestamp": "1670925849",
+    "scan_type": "local",
+    "scanner_end": 1670926438,
+    "scanner_name": "Local Scanner",
+    "scanner_start": 1670925849,
+    "selected_severity_base": "system_default",
+    "severity_base_selections": [
+      {
+        "display": "CVSS v2.0",
+        "value": "cvss_v2"
+      },
+      {
+        "display": "CVSS v3.0",
+        "value": "cvss_v3"
+      },
+      {
+        "display": "Default (CVSS v3.0)",
+        "value": "system_default"
+      }
+    ],
+    "severity_processed": "202212130548",
+    "status": "completed",
+    "targets": "10.1.15.60,10.1.15.52,10.1.15.53,172.16.4.67,172.16.4.65",
+    "timestamp": 1670926440,
+    "user_permissions": 128,
+    "uuid": "1fb6c230-a7cf-5a40-b862-9598e4353e0ab0a523d7a92c1bf4"
+  },
+  "notes": null,
+  "prioritization": {
+    "plugins": [],
+    "threat_level": 0
+  },
+  "remediations": {
+    "num_cves": 0,
+    "num_hosts": 5,
+    "num_impacted_hosts": 0,
+    "num_remediated_cves": 0,
+    "remediations": null
+  },
+  "summary": {
+    "authSuccess": null,
+    "families": [
+      {
+        "name": "SMTP problems",
+        "status": "disabled"
+      },
+      {
+        "name": "Backdoors",
+        "status": "disabled"
+      },
+      {
+        "name": "Rocky Linux Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Ubuntu Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "RPC",
+        "status": "disabled"
+      },
+      {
+        "name": "Gentoo Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Oracle Linux Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Brute force attacks",
+        "status": "disabled"
+      },
+      {
+        "name": "Gain a shell remotely",
+        "status": "disabled"
+      },
+      {
+        "name": "Service detection",
+        "status": "disabled"
+      },
+      {
+        "name": "DNS",
+        "status": "disabled"
+      },
+      {
+        "name": "Mandriva Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Junos Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Misc.",
+        "status": "disabled"
+      },
+      {
+        "name": "FTP",
+        "status": "disabled"
+      },
+      {
+        "name": "Slackware Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Default Unix Accounts",
+        "status": "disabled"
+      },
+      {
+        "name": "AIX Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "SNMP",
+        "status": "disabled"
+      },
+      {
+        "name": "OracleVM Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "CGI abuses",
+        "status": "disabled"
+      },
+      {
+        "name": "Settings",
+        "status": "disabled"
+      },
+      {
+        "name": "CISCO",
+        "status": "disabled"
+      },
+      {
+        "name": "Tenable.ot",
+        "status": "disabled"
+      },
+      {
+        "name": "Firewalls",
+        "status": "disabled"
+      },
+      {
+        "name": "Databases",
+        "status": "disabled"
+      },
+      {
+        "name": "Debian Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Fedora Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Netware",
+        "status": "disabled"
+      },
+      {
+        "name": "Huawei Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Windows : User management",
+        "status": "disabled"
+      },
+      {
+        "name": "VMware ESX Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Virtuozzo Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "CentOS Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Peer-To-Peer File Sharing",
+        "status": "disabled"
+      },
+      {
+        "name": "NewStart CGSL Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "General",
+        "status": "mixed"
+      },
+      {
+        "name": "Policy Compliance",
+        "status": "disabled"
+      },
+      {
+        "name": "Amazon Linux Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Solaris Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "F5 Networks Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Denial of Service",
+        "status": "disabled"
+      },
+      {
+        "name": "Windows : Microsoft Bulletins",
+        "status": "disabled"
+      },
+      {
+        "name": "SuSE Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Palo Alto Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Port scanners",
+        "status": "mixed"
+      },
+      {
+        "name": "Alma Linux Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Red Hat Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "PhotonOS Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "HP-UX Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Mobile Devices",
+        "status": "enabled"
+      },
+      {
+        "name": "CGI abuses : XSS",
+        "status": "disabled"
+      },
+      {
+        "name": "FreeBSD Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Windows",
+        "status": "disabled"
+      },
+      {
+        "name": "Scientific Linux Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "MacOS X Local Security Checks",
+        "status": "disabled"
+      },
+      {
+        "name": "Web Servers",
+        "status": "disabled"
+      },
+      {
+        "name": "SCADA",
+        "status": "disabled"
+      }
+    ],
+    "os_distros": null,
+    "plugin_rules_applied": null,
+    "policy_settings": {
+      "_dell_kace_k1000_settings[entry]": "R1",
+      "_hcl_bigfix_server_settings[checkbox]": "no",
+      "_ibm_tivoli_endpoint_manager_server_settings[checkbox]": "no",
+      "_microsoft_bulletins": "disabled",
+      "_red_hat_satellite_6_settings[checkbox]": "yes",
+      "_red_hat_satellite_6_settings[entry]": "443",
+      "_red_hat_satellite_server_settings[checkbox]": "no",
+      "_red_hat_satellite_server_settings[entry]": "443",
+      "_start_the_registry_service_during_the_scan[checkbox]": "no",
+      "_symantec_altiris_settings[checkbox]": "no",
+      "_symantec_altiris_settings[entry]": "5690",
+      "_user_management": "disabled",
+      "_wsus_server_settings[checkbox]": "no",
+      "_xss": "disabled",
+      "abort_web_application_tests_if_login_fails": "no",
+      "add_accounts_found_by_other_plugins_to_login_file": "yes",
+      "additional_auto_discover_managed_esxi_hosts_": "no",
+      "additional_auto_discover_managed_virtual_machines_": "no",
+      "additional_database_service_type_1_": "SID;SERVICE_NAME",
+      "additional_database_service_type_2_": "SID;SERVICE_NAME",
+      "additional_database_service_type_3_": "SID;SERVICE_NAME",
+      "additional_database_service_type_4_": "SID;SERVICE_NAME",
+      "additional_db_type_1_": "Oracle;SQL Server;MySQL;DB2;Informix/DRDA;PostgreSQL;Sybase ASE",
+      "additional_db_type_2_": "Oracle;SQL Server;MySQL;DB2;Informix/DRDA;PostgreSQL;Sybase ASE",
+      "additional_db_type_3_": "Oracle;SQL Server;MySQL;DB2;Informix/DRDA;PostgreSQL;Sybase ASE",
+      "additional_db_type_4_": "Oracle;SQL Server;MySQL;DB2;Informix/DRDA;PostgreSQL;Sybase ASE",
+      "additional_ignore_ssl_certificate_1_": "no",
+      "additional_ignore_ssl_certificate_2_": "no",
+      "additional_ignore_ssl_certificate_3_": "no",
+      "additional_ignore_ssl_certificate_4_": "no",
+      "additional_ignore_ssl_certificate_5_": "no",
+      "additional_oracle_auth_type_1_": "NORMAL;SYSOPER;SYSDBA",
+      "additional_oracle_auth_type_2_": "NORMAL;SYSOPER;SYSDBA",
+      "additional_oracle_auth_type_3_": "NORMAL;SYSOPER;SYSDBA",
+      "additional_oracle_auth_type_4_": "NORMAL;SYSOPER;SYSDBA",
+      "additional_sql_server_auth_type_1_": "Windows;SQL",
+      "additional_sql_server_auth_type_2_": "Windows;SQL",
+      "additional_sql_server_auth_type_3_": "Windows;SQL",
+      "additional_sql_server_auth_type_4_": "Windows;SQL",
+      "additional_ssl_1_": "yes",
+      "additional_ssl_2_": "yes",
+      "additional_ssl_3_": "yes",
+      "additional_ssl_4_": "yes",
+      "additional_ssl_5_": "yes",
+      "additional_sybase_ase_auth_type_1_": "RSA;Plain Text",
+      "additional_sybase_ase_auth_type_2_": "RSA;Plain Text",
+      "additional_sybase_ase_auth_type_3_": "RSA;Plain Text",
+      "additional_sybase_ase_auth_type_4_": "RSA;Plain Text",
+      "additional_verify_ssl_certificate_1_": "no",
+      "additional_verify_ssl_certificate_2_": "no",
+      "additional_verify_ssl_certificate_3_": "no",
+      "additional_verify_ssl_certificate_4_": "no",
+      "additional_verify_ssl_certificate_5_": "no",
+      "additional_vmware_vcenter_port_1_": "443",
+      "additional_vmware_vcenter_port_2_": "443",
+      "additional_vmware_vcenter_port_3_": "443",
+      "additional_vmware_vcenter_port_4_": "443",
+      "additional_vmware_vcenter_port_5_": "443",
+      "allow_nessus_to_connect_to_the_cloud_to_take_a_screenshot_of_the_public_targets": "no",
+      "allow_post_scan_editing": "yes",
+      "always_enable_hydra_slow": "no",
+      "apple_profile_manager_port_": "443",
+      "attached_report_maximum_size": "25",
+      "authentication_method_": "API-Key;Password",
+      "auto_discover_managed_esxi_hosts_": "no",
+      "auto_discover_managed_nutanix_hosts_": "yes",
+      "auto_discover_managed_virtual_machines_": "no",
+      "auto_enable_dependencies": "yes",
+      "auto_update": "yes",
+      "automated_login_page_search": "no",
+      "blackberry_uem_ssl_": "yes",
+      "blackberry_uem_verify_ssl_certificate_": "no",
+      "bw_permanent_blackout_window": "no",
+      "bw_prevent_agent_scans": "yes",
+      "bw_prevent_core_updates": "yes",
+      "bw_prevent_plugin_updates": "yes",
+      "case_insensitive_regex": "no",
+      "cgi_path": "/cgi-bin:/scripts",
+      "check_for_pci-dss_compliance": "no",
+      "check_open_tcp_ports_found_by_local_port_enumerators": "no",
+      "checks_read_timeout": "5",
+      "chicago_ord_": "yes",
+      "client_version_": "OpenSSH_5.0",
+      "collect_identity_data_from_active_directory": "no",
+      "combinations_of_arguments_values": "one value;some pairs;all pairs (slower but efficient);some combinations;all combinations (extremely slow)",
+      "community_name_": "public",
+      "compliance_generate_description": "no",
+      "dallas-fort_worth_dfw_": "yes",
+      "database_service_type_": "SID;SERVICE_NAME",
+      "db_type_": "Oracle;SQL Server;MySQL;DB2;Informix/DRDA;PostgreSQL;Sybase ASE",
+      "delay_in_days,_between_0_and_7_": "0",
+      "description": "AutoReconciliations Discovery",
+      "device_update_timeout_minutes_": "5",
+      "disable_api": "no",
+      "disable_dns_resolution": "no",
+      "disable_guides": "no",
+      "discovery_mode": "portscan_all",
+      "display_the_superseded_patches_in_the_report": "yes",
+      "do_a_tcp_ping": "yes",
+      "do_an_applicative_udp_ping_dns,rpc___": "no",
+      "do_an_arp_ping": "yes",
+      "do_an_icmp_ping": "yes",
+      "do_not_log_in_with_user_accounts_not_specified_in_the_policy": "yes",
+      "docker_scan_scope_": "all",
+      "edit_allowed": false,
+      "elevate_privileges_with_": "Nothing;sudo;su;su+sudo;dzdo;pbrun;Cisco 'enable'",
+      "enable_cgi_scanning": "no",
+      "enable_crl_checking_connects_to_internet": "no",
+      "enable_experimental_scripts": "no",
+      "enable_malware_scanning": "no",
+      "enable_plugin_debugging": "no",
+      "enable_plugin_list_report": "no",
+      "enable_web_applications_tests": "no",
+      "end_reg_": "16",
+      "engine_max": "64",
+      "engine_max_checks": "64",
+      "engine_max_hosts": "16",
+      "engine_min": "16",
+      "enumerate_all_ssl_ciphers": "yes",
+      "escalation_account_": "root",
+      "excluded_items_regex_": "/server_privileges\\.php|logout",
+      "exit_as_soon_as_an_account_is_found": "no",
+      "exploitable_vulns": false,
+      "fast_network_discovery": "no",
+      "feed_type": "ProFeed",
+      "firewall_detection_": "Automatic (normal)",
+      "follow_30x_redirections_#_of_levels_": "2",
+      "follow_dynamic_pages_": "no",
+      "force_device_updates_": "yes",
+      "from_address_": "nobody@example.edu",
+      "ftp_account_": "anonymous",
+      "ftp_writeable_directory_": "/incoming",
+      "hasaudittrail": false,
+      "haskb": false,
+      "hong_kong_hkg_": "yes",
+      "hostavgscantime": "135",
+      "hostcredsfailedcount": "5",
+      "hostcredssuccesscount": "0",
+      "hostcredswithoutcount": "0",
+      "hostmaxscantime": "164",
+      "hostmaxscantimehosts": "172.16.4.67",
+      "hostmedscantime": "120",
+      "hosts_vulns": false,
+      "hp_procurve_file_to_audit_": "Saved/(show config);Default/(show default-config);Running/(show running-config)",
+      "http_parameter_pollution": "no",
+      "http_user-agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)",
+      "identify_certificates_that_expire_within_x_days": "60",
+      "ignore_ssl_certificate_": "no",
+      "interpret_icmp_unreach_from_gateway": "no",
+      "invert_test_disconnected_if_regex_matches": "no",
+      "ios_config_file_to_audit_": "Saved/(show config);Running/(show running);Startup/(show startup)",
+      "kerberos_kdc_port_": "88",
+      "kerberos_kdc_transport_": "tcp",
+      "known_accounts": false,
+      "listen_address": "0.0.0.0",
+      "listen_port": "1241",
+      "loaded_plugin_set": "202212130548",
+      "local_portscan_netstat_ssh": "yes",
+      "local_portscan_netstat_wmi": "yes",
+      "local_portscan_snmp": "yes",
+      "log_live_hosts_in_the_report": "yes",
+      "log_whole_attack": "no",
+      "login_form_fields_": "user=%USER%&pass=%PASS%",
+      "login_form_method_": "POST;GET",
+      "login_page_": "/",
+      "london_lon_": "yes",
+      "make_the_dead_hosts_appear_in_the_report": "no",
+      "match_regex_on_http_headers": "no",
+      "max_checks": "5",
+      "max_hosts": "256",
+      "max_results_": "1000",
+      "maximum_depth_": "6",
+      "maximum_run_time_min_": "60",
+      "name": "Host Discovery",
+      "network_scanners_syn": "yes",
+      "network_scanners_tcp": "no",
+      "network_scanners_udp": "no",
+      "network_type": "Mixed (use RFC 1918)",
+      "never_send_smb_credentials_in_clear_text": "yes",
+      "non_simult_ports": "139, 445, 3389",
+      "northern_virginia_iad_": "yes",
+      "number_of_pages_to_mirror_": "1000",
+      "number_of_parallel_tasks_": "16",
+      "number_of_retries_icmp_": "2",
+      "nutanix_port_": "9440",
+      "offline": false,
+      "only_run_network_port_scanners_if_local_port_enumeration_failed": "yes",
+      "only_use_kerberos_authentication_for_smb": "no",
+      "only_use_ntlmv2": "no",
+      "optimize_test": "yes",
+      "oracle_auth_type": "NORMAL;SYSOPER;SYSDBA",
+      "oracle_service_type_": "SID;SERVICE_NAME",
+      "oses_found": false,
+      "oval_result_type_#1_": "Full results w/ system characteristics;Full results w/o system characteristics;Thin results",
+      "oval_result_type_#2_": "Full results w/ system characteristics;Full results w/o system characteristics;Thin results",
+      "oval_result_type_#3_": "Full results w/ system characteristics;Full results w/o system characteristics;Thin results",
+      "oval_result_type_#4_": "Full results w/ system characteristics;Full results w/o system characteristics;Thin results",
+      "oval_result_type_#5_": "Full results w/ system characteristics;Full results w/o system characteristics;Thin results",
+      "palo_alto_port_": "443",
+      "plugin_selection_family_aix_local_security_checks": "disabled",
+      "plugin_selection_family_alma_linux_local_security_checks": "disabled",
+      "plugin_selection_family_amazon_linux_local_security_checks": "disabled",
+      "plugin_selection_family_backdoors": "disabled",
+      "plugin_selection_family_brute_force_attacks": "disabled",
+      "plugin_selection_family_centos_local_security_checks": "disabled",
+      "plugin_selection_family_cgi_abuses": "disabled",
+      "plugin_selection_family_cisco": "disabled",
+      "plugin_selection_family_databases": "disabled",
+      "plugin_selection_family_debian_local_security_checks": "disabled",
+      "plugin_selection_family_default_unix_accounts": "disabled",
+      "plugin_selection_family_denial_of_service": "disabled",
+      "plugin_selection_family_dns": "disabled",
+      "plugin_selection_family_f5_networks_local_security_checks": "disabled",
+      "plugin_selection_family_fedora_local_security_checks": "disabled",
+      "plugin_selection_family_firewalls": "disabled",
+      "plugin_selection_family_freebsd_local_security_checks": "disabled",
+      "plugin_selection_family_ftp": "disabled",
+      "plugin_selection_family_gain_a_shell_remotely": "disabled",
+      "plugin_selection_family_general": "mixed",
+      "plugin_selection_family_gentoo_local_security_checks": "disabled",
+      "plugin_selection_family_hp-ux_local_security_checks": "disabled",
+      "plugin_selection_family_huawei_local_security_checks": "disabled",
+      "plugin_selection_family_junos_local_security_checks": "disabled",
+      "plugin_selection_family_macos_x_local_security_checks": "disabled",
+      "plugin_selection_family_mandriva_local_security_checks": "disabled",
+      "plugin_selection_family_misc_": "disabled",
+      "plugin_selection_family_netware": "disabled",
+      "plugin_selection_family_newstart_cgsl_local_security_checks": "disabled",
+      "plugin_selection_family_oracle_linux_local_security_checks": "disabled",
+      "plugin_selection_family_oraclevm_local_security_checks": "disabled",
+      "plugin_selection_family_palo_alto_local_security_checks": "disabled",
+      "plugin_selection_family_peer-to-peer_file_sharing": "disabled",
+      "plugin_selection_family_photonos_local_security_checks": "disabled",
+      "plugin_selection_family_policy_compliance": "disabled",
+      "plugin_selection_family_port_scanners": "mixed",
+      "plugin_selection_family_red_hat_local_security_checks": "disabled",
+      "plugin_selection_family_rocky_linux_local_security_checks": "disabled",
+      "plugin_selection_family_rpc": "disabled",
+      "plugin_selection_family_scada": "disabled",
+      "plugin_selection_family_scientific_linux_local_security_checks": "disabled",
+      "plugin_selection_family_service_detection": "disabled",
+      "plugin_selection_family_settings": "disabled",
+      "plugin_selection_family_slackware_local_security_checks": "disabled",
+      "plugin_selection_family_smtp_problems": "disabled",
+      "plugin_selection_family_snmp": "disabled",
+      "plugin_selection_family_solaris_local_security_checks": "disabled",
+      "plugin_selection_family_suse_local_security_checks": "disabled",
+      "plugin_selection_family_tenable_ot": "disabled",
+      "plugin_selection_family_ubuntu_local_security_checks": "disabled",
+      "plugin_selection_family_virtuozzo_local_security_checks": "disabled",
+      "plugin_selection_family_vmware_esx_local_security_checks": "disabled",
+      "plugin_selection_family_web_servers": "disabled",
+      "plugin_selection_family_windows": "disabled",
+      "plugin_selection_individual_plugin_10180": "enabled",
+      "plugin_selection_individual_plugin_11219": "enabled",
+      "plugin_selection_individual_plugin_14272": "enabled",
+      "plugin_selection_individual_plugin_14274": "enabled",
+      "plugin_selection_individual_plugin_34220": "enabled",
+      "plugin_set": "60023;76461;93525;93515;94330;96730;95826;101953;99185;100269;99127;103505;103420;106946;109397;105769;104350;110398;108812;106308;105075;111218;118146;117632;119610;121645;118569;121331;125090;128150;123080;126951;129391;132056;148262;136919;149331;145550;153652;164550;146459;133857;129587;150851;130461;151621;133528;132024;137137;134950;136920;138575;147663;142881;144451;148263;145548;140654;149353;152127;149987;149061;154714;152037;154137;156911;154722;153434;156187;159574;158036;157199;161384;158972;163395;164970;164289;167264;166099;153507;166598;165105;60025;60027;62803;72666;70174;60028;65633;60026;64287;70562;62242;72667;70925;73647;76315;69984;72907;79312;77745;78585;81050;81746;82703;84490;85407;86253;86571;85987;92844;88050;87310;91225;93124;90118;92359;65676;60029;60031;68963;71992;73439;74125;77247;82296;70135;81210;124859;66964;77761;125029;91999;60033;60034;60035;64451;72905;11219;14272;10180;14274;62516;62517;34220;",
+      "plugin_upload": "yes",
+      "plugins_timeout": "320",
+      "policy": "Host Discovery",
+      "port": "443",
+      "port_": "443",
+      "port_range": "1-65535",
+      "portscan_ping": "yes",
+      "preferred_ssh_port_": "22",
+      "probe_services_on_every_port": "yes",
+      "reduce_connections_on_congestion": "no",
+      "region_af-south-1_": "no",
+      "region_ap-east-1_": "no",
+      "region_ap-northeast-1_": "no",
+      "region_ap-northeast-2_": "no",
+      "region_ap-northeast-3_": "no",
+      "region_ap-south-1_": "no",
+      "region_ap-southeast-1_": "no",
+      "region_ap-southeast-2_": "no",
+      "region_ca-central-1_": "no",
+      "region_cn-north-1_": "no",
+      "region_cn-northwest-1_": "no",
+      "region_eu-central-1_": "no",
+      "region_eu-north-1_": "no",
+      "region_eu-south-1_": "no",
+      "region_eu-west-1_": "no",
+      "region_eu-west-2_": "no",
+      "region_eu-west-3_": "no",
+      "region_me-south-1_": "no",
+      "region_sa-east-1_": "no",
+      "region_us-east-1_": "no",
+      "region_us-east-2_": "no",
+      "region_us-gov-east-1_": "no",
+      "region_us-gov-west-1_": "no",
+      "region_us-west-1_": "no",
+      "region_us-west-2_": "no",
+      "report_cleanup_threshold_days": "30",
+      "report_crashes": "yes",
+      "report_paranoia": "Normal;Avoid false alarms;Paranoid (more false alarms)",
+      "report_task_id": "1fb6c230-a7cf-5a40-b862-9598e4353e0ab0a523d7a92c1bf4",
+      "report_verbosity": "Normal;Quiet;Verbose",
+      "request_information_about_the_domain": "yes",
+      "reverse_lookup": "yes",
+      "safe_checks": "yes",
+      "scan_description": "AutoReconciliations Discovery",
+      "scan_enable_utf8_output": "no",
+      "scan_end_timestamp": "1670926438",
+      "scan_history_expiration_days": "0",
+      "scan_network_printers": "no",
+      "scan_novell_netware_hosts": "no",
+      "scan_operational_technology_devices": "yes",
+      "scan_start_timestamp": "1670925849",
+      "scan_unlimited": "yes",
+      "scan_vulnerability_groups": "yes",
+      "scan_vulnerability_groups_mixed": "yes",
+      "scap_version_#1_": "1.2;1.1;1.0",
+      "scap_version_#2_": "1.2;1.1;1.0",
+      "scap_version_#3_": "1.2;1.1;1.0",
+      "scap_version_#4_": "1.2;1.1;1.0",
+      "scap_version_#5_": "1.2;1.1;1.0",
+      "severity_basis": "cvss_v3",
+      "severity_processed": "202212130548",
+      "silent_dependencies": "yes",
+      "slice_network_addresses": "no",
+      "snmpv3_authentication_algorithm_": "MD5;SHA1",
+      "snmpv3_authentication_algorithm_1_": "MD5;SHA1",
+      "snmpv3_authentication_algorithm_2_": "MD5;SHA1",
+      "snmpv3_authentication_algorithm_3_": "MD5;SHA1",
+      "snmpv3_authentication_algorithm_4_": "MD5;SHA1",
+      "snmpv3_authentication_algorithm_5_": "MD5;SHA1",
+      "snmpv3_privacy_algorithm_": "AES;DES",
+      "snmpv3_privacy_algorithm_1_": "AES;DES",
+      "snmpv3_privacy_algorithm_2_": "AES;DES",
+      "snmpv3_privacy_algorithm_3_": "AES;DES",
+      "snmpv3_privacy_algorithm_4_": "AES;DES",
+      "snmpv3_privacy_algorithm_5_": "AES;DES",
+      "sql_server_auth_type": "Windows;SQL",
+      "ssh_user_name_": "root",
+      "ssl": "yes",
+      "ssl_": "yes",
+      "ssl_mode": "tls_1_2",
+      "start_page_": "/",
+      "start_reg_": "0",
+      "status": "completed",
+      "stop_at_first_flaw": "per CGI;per port (quicker);per parameter (slow);look for all flaws (slower)",
+      "stop_scan_on_disconnect": "no",
+      "sybase_ase_auth_type": "RSA;Plain Text",
+      "sydney_syd_": "yes",
+      "targets": "10.1.15.60,10.1.15.52,10.1.15.53,172.16.4.67,172.16.4.65",
+      "tcp_ping_destination_ports_": "built-in",
+      "tenant_name_for_authentication_": "admin",
+      "test_default_accounts_slow": "no",
+      "test_embedded_web_servers": "no",
+      "test_ssl_based_services": "All ports",
+      "test_the_local_nessus_host": "yes",
+      "third_party_domain_": "example.edu",
+      "thorough_tests_slow": "no",
+      "time_to_wait_in_minutes_for_the_systems_to_boot": "5",
+      "timeout_in_seconds_": "30",
+      "timestamp": 1670926440,
+      "to_address_": "postmaster@[AUTO_REPLACED_IP]",
+      "top10": false,
+      "track_unique_agents": "yes",
+      "try_all_http_methods": "no",
+      "try_to_perform_patch_level_checks_over_rexec": "no",
+      "try_to_perform_patch_level_checks_over_rsh": "no",
+      "try_to_perform_patch_level_checks_over_telnet": "no",
+      "udp_port_": "161",
+      "ui_theme": "dark",
+      "unscanned_closed": "no",
+      "unsupported_software": false,
+      "url_for_remote_file_inclusion_": "http://rfi.nessus.org/rfi.txt",
+      "uuid": "1fb6c230-a7cf-5a40-b862-9598e4353e0ab0a523d7a92c1bf4",
+      "verify_ssl_certificate": "yes",
+      "verify_ssl_certificate_": "no",
+      "visibility": "private",
+      "vmware_vcenter_port_": "443",
+      "whoami": "kali",
+      "wizard_uuid": "bbd4f805-3966-d464-b2d1-0079eb89d69708c3a05ec2812bcf",
+      "xmlrpc_listen_port": "8834",
+      "year_old_vulns": false
+    },
+    "stats": {
+      "hostAvgScanTime": "135",
+      "hostCredsFailedCount": "5",
+      "hostCredsSuccessCount": "0",
+      "hostCredsWithoutCount": "0",
+      "hostMaxScanTime": "164",
+      "hostMaxScanTimeHosts": "172.16.4.67",
+      "hostMedScanTime": "120"
+    }
+  },
+  "vulnerabilities": [
+    {
+      "count": 5,
+      "cpe": null,
+      "offline": false,
+      "plugin_family": "Port scanners",
+      "plugin_id": 10180,
+      "plugin_name": "Ping the remote host",
+      "score": null,
+      "severity": 0,
+      "severity_index": 0,
+      "snoozed": 0,
+      "vuln_index": 5
+    },
+    {
+      "count": 5,
+      "cpe": null,
+      "offline": false,
+      "plugin_family": "Settings",
+      "plugin_id": 19506,
+      "plugin_name": "Nessus Scan Information",
+      "score": null,
+      "severity": 0,
+      "severity_index": 1,
+      "snoozed": 0,
+      "vuln_index": 3
+    },
+    {
+      "count": 59,
+      "cpe": null,
+      "offline": false,
+      "plugin_family": "Port scanners",
+      "plugin_id": 11219,
+      "plugin_name": "Nessus SYN scanner",
+      "score": null,
+      "severity": 0,
+      "severity_index": 2,
+      "snoozed": 0,
+      "vuln_index": 4
+    }
+  ]
+}
