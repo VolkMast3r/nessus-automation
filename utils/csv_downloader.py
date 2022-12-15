@@ -12,9 +12,9 @@ from dotenv import load_dotenv
 env_path = os.path.join(os.path.dirname(__file__), '../.env')
 load_dotenv(env_path)
 base_url = os.environ.get('base_url')
-print(base_url)
+# print(base_url)
 headers = json.loads(os.environ.get('headers'))
-print(headers)
+# print(headers)
 
 def download_csv_report(scan_id):
     '''
@@ -23,15 +23,15 @@ def download_csv_report(scan_id):
     # Get file IDS
     file_ids = httpx.post(f'{base_url}{scan_id}/export',
                         headers=headers, verify=False, json={"format": "csv"})
-    print(json.dumps(file_ids.json(), indent=4, sort_keys=True))
+    # print(json.dumps(file_ids.json(), indent=4, sort_keys=True))
     file_id = file_ids.json()['file']
-    print(file_id)
+    # print(file_id)
 
     # wait for file to be generated loop
     while True:
         status = httpx.get(f'{base_url}{scan_id}/export/{file_id}/status',
                         headers=headers, verify=False)
-        print(json.dumps(status.json(), indent=4, sort_keys=True))
+        # print(json.dumps(status.json(), indent=4, sort_keys=True))
         if status.json()['status'] != 'ready':
             continue
         # download file
@@ -43,7 +43,6 @@ def download_csv_report(scan_id):
         filename = report_headers['Content-Disposition'].split('filename=')[1]
         # remove spaces and replace with underscore
         filename = filename.replace(' ', '_').replace('"', '')
-        print(dir(report))
         with open(str(f'repos/csvs/{filename}'), 'wb') as f:
             f.write(report.content)
         # convert to excel
@@ -58,15 +57,15 @@ def download_html_report(scan_id):
     # get the file ids
     file_ids = httpx.post(f'{base_url}{scan_id}/export',
                             headers=headers, verify=False, json={"format": "html", "template_id": "919"})
-    print(json.dumps(file_ids.json(), indent=4, sort_keys=True))
+    # print(json.dumps(file_ids.json(), indent=4, sort_keys=True))
     file_id = file_ids.json()['file']
-    print(file_id)
+    # print(file_id)
 
     # wait for file to be generated loop
     while True:
         status = httpx.get(f'{base_url}{scan_id}/export/{file_id}/status',
                         headers=headers, verify=False)
-        print(json.dumps(status.json(), indent=4, sort_keys=True))
+        # print(json.dumps(status.json(), indent=4, sort_keys=True))
         if status.json()['status'] == 'running':
             continue
         if status.json()['status'] == 'error':
@@ -82,10 +81,9 @@ def download_html_report(scan_id):
             filename = report_headers['Content-Disposition'].split('filename=')[1]
             # remove spaces and replace with underscore
             filename = filename.replace(' ', '_').replace('"', '')
-            print(dir(report))
             with open(str(f'repos/htmls/{filename}'), 'wb') as f:
                 f.write(report.content)
             break
 
 
-print(download_csv_report(124))
+# print(download_csv_report(124))
