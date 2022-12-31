@@ -178,7 +178,10 @@ cython_debug/
 
 *.xlsx
 *.xls
-
+*.pdf
+*.png
+*.docx
+*.doc
 
 
 venv

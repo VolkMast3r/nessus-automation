@@ -3,7 +3,15 @@ import sys
 
 
 
-def convert_docx_pdf(filename):
+def convert_docx_to_pdf(filename):
+    '''
+    Function to convert docx to pdf
+    Arguments:
+        filename {str} -- filename of the docx file
+    Returns:
+        str -- filename of the pdf file
+        
+    '''
     if os.name == 'nt':
         import docx2pdf
         # Convert docx to pdf using docx2pdf library
@@ -25,14 +33,6 @@ def convert_docx_pdf(filename):
     return filename
 
 
-if __name__ == '__main__':
-    # check if the filename is passed as an argument
-    if len(sys.argv) > 1:
-        filename = sys.argv[1]
-        convert_docx_pdf(filename)
-    else:
-        print('Please pass the filename as an argument as shown below:')
-        print('python convert_docx_pdf.py filename.docx')
 
 
 
