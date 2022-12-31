@@ -173,3 +173,14 @@ cython_debug/
 # csv files
 *.csv
 /repos/csvs/*.csv
+/repos/csvs/*.xlsx
+/repos/csvs/*.xls
+
+*.xlsx
+*.xls
+
+
+
+venv
+*.pyc
+__pycache__

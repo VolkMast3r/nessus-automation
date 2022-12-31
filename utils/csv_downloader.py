@@ -21,8 +21,12 @@ def download_csv_report(scan_id):
     Function to download csv report from nessus
     '''
     # Get file IDS
-    file_ids = httpx.post(f'{base_url}{scan_id}/export',
-                        headers=headers, verify=False, json={"format": "csv"})
+    try:
+        file_ids = httpx.post(f'{base_url}{scan_id}/export',
+                            headers=headers, verify=False, json={"format": "csv"})
+    except Exception as e:
+        print(e)
+        return e
     # print(json.dumps(file_ids.json(), indent=4, sort_keys=True))
     file_id = file_ids.json()['file']
     # print(file_id)

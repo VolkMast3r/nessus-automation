@@ -7,6 +7,7 @@ from docx.shared import Inches
 from utils import risk_analysis, vuln_analysis, open_ports
 import httpx 
 from dotenv import load_dotenv
+import docx2pdf
 
 
 # Get API keys from .env file  in the current directory
@@ -18,8 +19,7 @@ headers = json.loads(os.environ.get('headers'))
 print(headers)
 # from config.config import get_platcorp_subs
 
-
-scan_id = '333'
+scan_id = '121'
 # initialize the document
 document = DocxTemplate(
     'word_reports/activity_log.docx')
